@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import apiWPSite from '../../conf/api.wp_site';
+import { Sites } from '../../../sites.js';
+import { withTracker } from 'meteor/react-meteor-data';
 
 class Cells extends React.Component {
     render() {
@@ -32,7 +34,6 @@ class Cells extends React.Component {
     }
 }
 
-export default class List extends React.Component {
     
     constructor(props){
         super(props);
@@ -40,6 +41,7 @@ export default class List extends React.Component {
             sites: []
         }
     }
+class List extends React.Component {
 
     componentDidMount() {
         apiWPSite.get('/sites')
@@ -88,3 +90,9 @@ export default class List extends React.Component {
         );
     }
 }
+
+export default withTracker(() => {
+  return {
+    sites: Sites.find({}).fetch(),
+  };
+})(List);
