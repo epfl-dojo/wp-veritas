@@ -34,26 +34,8 @@ class Cells extends React.Component {
     }
 }
 
-    
-    constructor(props){
-        super(props);
-        this.state = {
-            sites: []
-        }
-    }
 class List extends React.Component {
 
-    componentDidMount() {
-        apiWPSite.get('/sites')
-          .then( response => response.data )
-          .then( sites => {
-              this.setState(
-                  {sites: sites}
-              )
-            }
-          )
-          .catch( err => console.log(err));
-    }
 
     deleteSite = (siteID) => {
         const sites = [...this.state.sites.filter(site => site._id !== siteID)];
