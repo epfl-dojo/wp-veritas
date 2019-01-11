@@ -8,7 +8,7 @@ class Cells extends React.Component {
     render() {
         return (
             <tbody>
-                {this.props.sites.map( (site, index) => (
+                {(this.props.sites||[]).map( (site, index) => (
                     <tr key={site._id}>
                         <th scope="row">{index+1}</th>
                         <td>{site.url}</td>
@@ -66,7 +66,7 @@ class List extends React.Component {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <Cells sites={this.state.sites} deleteSite={ this.deleteSite }/>
+                    <Cells sites={(this.props.sites||[])} deleteSite={ this.deleteSite }/>
                 </table>
             </div>
         );
