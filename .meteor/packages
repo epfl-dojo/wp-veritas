@@ -21,3 +21,4 @@ static-html
 fourseven:scss
 seba:minifiers-autoprefixer
 nathantreid:static-assets
+react-meteor-data
